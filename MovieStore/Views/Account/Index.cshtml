@@ -1,0 +1,48 @@
+﻿@model List<MovieStore.Models.ApplicationUser>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>Registred Users</h2>
+
+
+
+<table class="table">
+    <tr>
+        <th>
+            first name
+        </th>
+        <th>
+            email
+        </th>
+        <th>
+            username
+        </th>
+        <th>
+            Options
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @item.FirstName
+            </td>
+            <td>
+                @item.Email
+            </td>
+            <td>
+                @item.UserName
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Index","Manage", routeValues: new { UserId = item.Id },htmlAttributes:new { } ) |
+
+                <i class="fa fa-trash fa-2x cursor-pointer" data-toggle="modal" data-target="#myModal"></i>
+            </td>
+        </tr>
+
+    }
+
+</table>

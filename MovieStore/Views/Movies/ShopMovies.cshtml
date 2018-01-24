@@ -1,0 +1,27 @@
+﻿@model IEnumerable<MovieStore.Models.Movie>
+
+@{
+    ViewBag.Title = "Popular Movies";
+}
+<div class="row" style="margin:30px">
+    <h2>Popular Movies</h2>
+
+    @*@foreach (var item in Model)
+    {
+
+
+        @Html.Partial("_Movie", item);
+    }*@
+    @Html.Action("PopularMovies", "Movies")
+</div>
+<hr />
+<div class="row" style="margin:30px">
+    <h2>Old Movies</h2>
+    @Html.Action("OldestMovies", "Movies")
+</div>
+
+
+<hr />
+<div class="row" style="margin:30px">
+    @Html.Action("LatestMovies", "Movies")
+</div>

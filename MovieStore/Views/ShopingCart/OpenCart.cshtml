@@ -1,0 +1,102 @@
+﻿@model IEnumerable<KeyValuePair<int, Movie>>
+@using MovieStore.Models;
+
+@{
+    ViewBag.Title = "OpenCart";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+    int total = 0;
+
+}
+
+<div class="row">
+    @foreach (var item in Model)
+    {
+        <div class="col-md-3">
+            <h4>Movie</h4>
+            <hr />
+            <dl class="dl-horizontal">
+                <dt>
+                    Title
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => item.Value.Title)
+                </dd>
+
+                <dt>
+                    Director
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => item.Value.Director)
+                </dd>
+
+                <dt>
+                    Release Year
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => item.Value.ReleaseYear)
+                </dd>
+
+                <dt>
+                    Price
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => item.Value.Price)
+                </dd>
+
+                <dt>
+                    Total Price
+                </dt>
+
+                <dd>
+                    @{
+                        int total_each= item.Key * item.Value.Price;
+                        total += total_each;
+
+                        @total_each
+                    }
+                </dd>
+
+            </dl>
+
+            <div class="center">
+                <p>
+                </p><div class="input-group">
+                    <span class="input-group-btn">
+                        <a href="@Url.Action("Decrease", "ShopingCart", new { id = item.Value.Id })" type="button" class="btn btn-danger btn-number" data-type="minus">
+                            <span class="glyphicon glyphicon-minus"></span>
+                        </a>
+                    </span>
+                    <input type="text" disabled class="form-control input-number" value="@item.Key" min="1" max="100">
+                    <span class="input-group-btn">
+                        <a href="@Url.Action("Increase", "ShopingCart", new { id = item.Value.Id })" type="button" class="btn btn-success btn-number" data-type="plus">
+                            <span class="glyphicon glyphicon-plus"></span>
+                        </a>
+                    </span>
+                </div>
+                <p></p>
+            </div>
+        </div>
+                        }
+
+</div>
+<div class="row">
+    <ul class="nav nav-pills" role="tablist">
+        <li role="presentation" class="active"><a href="#">Total: <span class="badge">@total</span> SEK</a></li>
+        @if (!User.Identity.IsAuthenticated)
+        {
+            <li role="presentation"><a href="@Url.Action("Login","Account")" type="button" class="btn btn-default">Login & check out</a></li>
+            <li role="presentation"><a href="@Url.Action("Register","Account")" type="button" class="btn btn-default">Register & check out</a></li>
+            <li role="presentation"><a href="@Url.Action("Create","Customers")" type="button" class="btn btn-default">check out</a></li>
+        }
+        else
+        {
+            <li role="presentation"><a href="@Url.Action("CheckOut","Customers")" type="button" class="btn btn-default">check out</a></li>
+        }
+
+    </ul>
+</div>
+

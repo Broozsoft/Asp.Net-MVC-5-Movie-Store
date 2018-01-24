@@ -1,0 +1,17 @@
+﻿@model MovieStore.Models.Movie
+
+<div class="col-md-3 item">
+    <h5>@Model.Title</h5>
+
+    <img src="~/Upload/@Model.image" class="movie-thumbnail"
+         alt="Cinque Terre" height="360" width="255" />
+    <ul class="list-group">
+        <li class="list-group-item"><span class="pull-right">@Model.Director</span>Director:</li>
+        <li class="list-group-item">Release:<span class="pull-right">@Model.ReleaseYear.ToShortDateString()</span></li>
+        <li class="list-group-item">
+            @Model.Price $<span class="pull-right">
+            @Html.ActionLink(" ", "AddToCart", "ShopingCart", routeValues: new { id = Model.Id }, htmlAttributes: new { @class = "fa fa-cart-plus fa-2x" })
+        </span>
+    </li>
+</ul>
+</div>

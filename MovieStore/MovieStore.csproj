@@ -1,0 +1,766 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props" Condition="Exists('..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{05B10EDC-82AF-41AB-B9DF-C88223809429}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>MovieStore</RootNamespace>
+    <AssemblyName>MovieStore</AssemblyName>
+    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort>44355</IISExpressSSLPort>
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.AI.Agent.Intercept, Version=1.2.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.Agent.Intercept.1.2.1\lib\net45\Microsoft.AI.Agent.Intercept.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AI.DependencyCollector, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.DependencyCollector.2.0.0\lib\net45\Microsoft.AI.DependencyCollector.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AI.PerfCounterCollector, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.PerfCounterCollector.2.0.0\lib\net45\Microsoft.AI.PerfCounterCollector.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AI.ServerTelemetryChannel, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.2.0.0\lib\net45\Microsoft.AI.ServerTelemetryChannel.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AI.Web, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.Web.2.0.0\lib\net45\Microsoft.AI.Web.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AI.WindowsServer, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.WindowsServer.2.0.0\lib\net45\Microsoft.AI.WindowsServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.ApplicationInsights, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.2.0.0\lib\net46\Microsoft.ApplicationInsights.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.SignalR.Client, Version=2.2.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.SignalR.Client.2.2.2\lib\net45\Microsoft.AspNet.SignalR.Client.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.SignalR.Core, Version=2.2.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.SignalR.Core.2.2.2\lib\net45\Microsoft.AspNet.SignalR.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.SignalR.SystemWeb, Version=2.2.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.SignalR.SystemWeb.2.2.2\lib\net45\Microsoft.AspNet.SignalR.SystemWeb.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="PagedList, Version=1.17.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\PagedList.1.17.0.0\lib\net40\PagedList.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="PagedList.Mvc, Version=4.5.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\PagedList.Mvc.4.5.0.0\lib\net40\PagedList.Mvc.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="SocketIOClient, Version=0.6.26.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\SocketIO4Net.Client.0.6.26\lib\net40\SocketIOClient.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http">
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest">
+    </Reference>
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.3\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Optimization">
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.3\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="Antlr3.Runtime">
+      <Private>True</Private>
+      <HintPath>..\packages\Antlr.3.4.1.9004\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="WebGrease, Version=1.6.5135.21930, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\WebGrease.1.6.0\lib\WebGrease.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="WebSocket4Net, Version=0.7.0.0, Culture=neutral, PublicKeyToken=eb4e154b696bf72a, processorArchitecture=MSIL">
+      <HintPath>..\packages\SocketIO4Net.Client.0.6.26\lib\net40\WebSocket4Net.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.6.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Core">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.2.1\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Owin">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Owin.2.2.1\lib\net45\Microsoft.AspNet.Identity.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.EntityFramework">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.EntityFramework.2.2.1\lib\net45\Microsoft.AspNet.Identity.EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="Owin">
+      <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin">
+      <HintPath>..\packages\Microsoft.Owin.3.0.1\lib\net45\Microsoft.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Host.SystemWeb">
+      <HintPath>..\packages\Microsoft.Owin.Host.SystemWeb.3.0.1\lib\net45\Microsoft.Owin.Host.SystemWeb.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security">
+      <HintPath>..\packages\Microsoft.Owin.Security.3.0.1\lib\net45\Microsoft.Owin.Security.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Facebook">
+      <HintPath>..\packages\Microsoft.Owin.Security.Facebook.3.0.1\lib\net45\Microsoft.Owin.Security.Facebook.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Cookies">
+      <HintPath>..\packages\Microsoft.Owin.Security.Cookies.3.0.1\lib\net45\Microsoft.Owin.Security.Cookies.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.OAuth">
+      <HintPath>..\packages\Microsoft.Owin.Security.OAuth.3.0.1\lib\net45\Microsoft.Owin.Security.OAuth.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Google">
+      <HintPath>..\packages\Microsoft.Owin.Security.Google.3.0.1\lib\net45\Microsoft.Owin.Security.Google.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Twitter">
+      <HintPath>..\packages\Microsoft.Owin.Security.Twitter.3.0.1\lib\net45\Microsoft.Owin.Security.Twitter.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.MicrosoftAccount">
+      <HintPath>..\packages\Microsoft.Owin.Security.MicrosoftAccount.3.0.1\lib\net45\Microsoft.Owin.Security.MicrosoftAccount.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\IdentityConfig.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="ChatHub.cs" />
+    <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\CustomersController.cs" />
+    <Compile Include="Controllers\CustomStartup.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\MoviesController.cs" />
+    <Compile Include="Controllers\OrdersController.cs" />
+    <Compile Include="Controllers\RoleController.cs" />
+    <Compile Include="Controllers\ShopingCartController.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201709121011577_role3.cs" />
+    <Compile Include="Migrations\201709121011577_role3.Designer.cs">
+      <DependentUpon>201709121011577_role3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201709180926357_init-6.cs" />
+    <Compile Include="Migrations\201709180926357_init-6.Designer.cs">
+      <DependentUpon>201709180926357_init-6.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201710021343428_init89.cs" />
+    <Compile Include="Migrations\201710021343428_init89.Designer.cs">
+      <DependentUpon>201710021343428_init89.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201710040815431_nint12.cs" />
+    <Compile Include="Migrations\201710040815431_nint12.Designer.cs">
+      <DependentUpon>201710040815431_nint12.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201710041034308_init25.cs" />
+    <Compile Include="Migrations\201710041034308_init25.Designer.cs">
+      <DependentUpon>201710041034308_init25.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201710060644474_init17.cs" />
+    <Compile Include="Migrations\201710060644474_init17.Designer.cs">
+      <DependentUpon>201710060644474_init17.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\MovieStoreDb\Customer.cs" />
+    <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\MovieStoreDb\Movie.cs" />
+    <Compile Include="Models\MovieStoreDb\Order.cs" />
+    <Compile Include="Models\MovieStoreDb\Order_Movie.cs" />
+    <Compile Include="Models\RoleViewModel.cs" />
+    <Compile Include="Models\ViewModels\CartMoviesViewModel.cs" />
+    <Compile Include="Models\ViewModels\UserViewModel.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Startup.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="app\app.js" />
+    <Content Include="Content\AdminStyel.css" />
+    <Content Include="Content\bootstrap-datetimepicker.css" />
+    <Content Include="Content\bootstrap-datetimepicker.min.css" />
+    <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\PagedList.css" />
+    <Content Include="Content\style.css" />
+    <Content Include="favicon.ico" />
+    <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Global.asax" />
+    <Content Include="Content\Site.css" />
+    <Content Include="index.js" />
+    <Content Include="node_modules\accepts\index.js" />
+    <Content Include="node_modules\array-flatten\array-flatten.js" />
+    <Content Include="node_modules\content-disposition\index.js" />
+    <Content Include="node_modules\content-type\index.js" />
+    <Content Include="node_modules\cookie-signature\index.js" />
+    <Content Include="node_modules\cookie\index.js" />
+    <Content Include="node_modules\debug\karma.conf.js" />
+    <Content Include="node_modules\debug\node.js" />
+    <Content Include="node_modules\debug\src\browser.js" />
+    <Content Include="node_modules\debug\src\debug.js" />
+    <Content Include="node_modules\debug\src\index.js" />
+    <Content Include="node_modules\debug\src\node.js" />
+    <Content Include="node_modules\depd\index.js" />
+    <Content Include="node_modules\depd\lib\browser\index.js" />
+    <Content Include="node_modules\depd\lib\compat\callsite-tostring.js" />
+    <Content Include="node_modules\depd\lib\compat\event-listener-count.js" />
+    <Content Include="node_modules\depd\lib\compat\index.js" />
+    <Content Include="node_modules\destroy\index.js" />
+    <Content Include="node_modules\ee-first\index.js" />
+    <Content Include="node_modules\encodeurl\index.js" />
+    <Content Include="node_modules\escape-html\index.js" />
+    <Content Include="node_modules\etag\index.js" />
+    <Content Include="node_modules\express\index.js" />
+    <Content Include="node_modules\express\lib\application.js" />
+    <Content Include="node_modules\express\lib\express.js" />
+    <Content Include="node_modules\express\lib\middleware\init.js" />
+    <Content Include="node_modules\express\lib\middleware\query.js" />
+    <Content Include="node_modules\express\lib\request.js" />
+    <Content Include="node_modules\express\lib\response.js" />
+    <Content Include="node_modules\express\lib\router\index.js" />
+    <Content Include="node_modules\express\lib\router\layer.js" />
+    <Content Include="node_modules\express\lib\router\route.js" />
+    <Content Include="node_modules\express\lib\utils.js" />
+    <Content Include="node_modules\express\lib\view.js" />
+    <Content Include="node_modules\finalhandler\index.js" />
+    <Content Include="node_modules\finalhandler\node_modules\debug\karma.conf.js" />
+    <Content Include="node_modules\finalhandler\node_modules\debug\node.js" />
+    <Content Include="node_modules\finalhandler\node_modules\debug\src\browser.js" />
+    <Content Include="node_modules\finalhandler\node_modules\debug\src\debug.js" />
+    <Content Include="node_modules\finalhandler\node_modules\debug\src\index.js" />
+    <Content Include="node_modules\finalhandler\node_modules\debug\src\inspector-log.js" />
+    <Content Include="node_modules\finalhandler\node_modules\debug\src\node.js" />
+    <Content Include="node_modules\finalhandler\node_modules\ms\index.js" />
+    <Content Include="node_modules\forwarded\index.js" />
+    <Content Include="node_modules\fresh\index.js" />
+    <Content Include="node_modules\http-errors\index.js" />
+    <Content Include="node_modules\inherits\inherits.js" />
+    <Content Include="node_modules\inherits\inherits_browser.js" />
+    <Content Include="node_modules\ipaddr.js\ipaddr.min.js" />
+    <Content Include="node_modules\ipaddr.js\lib\ipaddr.js" />
+    <Content Include="node_modules\media-typer\index.js" />
+    <Content Include="node_modules\merge-descriptors\index.js" />
+    <Content Include="node_modules\methods\index.js" />
+    <Content Include="node_modules\mime-db\index.js" />
+    <Content Include="node_modules\mime-types\index.js" />
+    <Content Include="node_modules\mime\build\build.js" />
+    <Content Include="node_modules\mime\build\test.js" />
+    <Content Include="node_modules\mime\cli.js" />
+    <Content Include="node_modules\mime\mime.js" />
+    <Content Include="node_modules\ms\index.js" />
+    <Content Include="node_modules\negotiator\index.js" />
+    <Content Include="node_modules\negotiator\lib\charset.js" />
+    <Content Include="node_modules\negotiator\lib\encoding.js" />
+    <Content Include="node_modules\negotiator\lib\language.js" />
+    <Content Include="node_modules\negotiator\lib\mediaType.js" />
+    <Content Include="node_modules\on-finished\index.js" />
+    <Content Include="node_modules\parseurl\index.js" />
+    <Content Include="node_modules\path-to-regexp\index.js" />
+    <Content Include="node_modules\proxy-addr\index.js" />
+    <Content Include="node_modules\qs\dist\qs.js" />
+    <Content Include="node_modules\qs\lib\formats.js" />
+    <Content Include="node_modules\qs\lib\index.js" />
+    <Content Include="node_modules\qs\lib\parse.js" />
+    <Content Include="node_modules\qs\lib\stringify.js" />
+    <Content Include="node_modules\qs\lib\utils.js" />
+    <Content Include="node_modules\qs\test\index.js" />
+    <Content Include="node_modules\qs\test\parse.js" />
+    <Content Include="node_modules\qs\test\stringify.js" />
+    <Content Include="node_modules\qs\test\utils.js" />
+    <Content Include="node_modules\range-parser\index.js" />
+    <Content Include="node_modules\send\index.js" />
+    <Content Include="node_modules\serve-static\index.js" />
+    <Content Include="node_modules\setprototypeof\index.js" />
+    <Content Include="node_modules\statuses\index.js" />
+    <Content Include="node_modules\type-is\index.js" />
+    <Content Include="node_modules\unpipe\index.js" />
+    <Content Include="node_modules\utils-merge\index.js" />
+    <Content Include="node_modules\vary\index.js" />
+    <Content Include="Scripts\AdminScript.js" />
+    <Content Include="Scripts\ai.0.22.9-build00167.js" />
+    <Content Include="Scripts\ai.0.22.9-build00167.min.js" />
+    <Content Include="ApplicationInsights.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Content\bootstrap.css.map" />
+    <None Include=".bin\node.cmd" />
+    <Content Include="package.json" />
+    <Content Include="node_modules\.bin\mime" />
+    <Content Include="node_modules\.bin\mime.cmd" />
+    <Content Include="node_modules\accepts\HISTORY.md" />
+    <Content Include="node_modules\accepts\LICENSE" />
+    <Content Include="node_modules\accepts\package.json" />
+    <Content Include="node_modules\accepts\README.md" />
+    <Content Include="node_modules\array-flatten\LICENSE" />
+    <Content Include="node_modules\array-flatten\package.json" />
+    <Content Include="node_modules\array-flatten\README.md" />
+    <Content Include="node_modules\content-disposition\HISTORY.md" />
+    <Content Include="node_modules\content-disposition\LICENSE" />
+    <Content Include="node_modules\content-disposition\package.json" />
+    <Content Include="node_modules\content-disposition\README.md" />
+    <Content Include="node_modules\content-type\HISTORY.md" />
+    <Content Include="node_modules\content-type\LICENSE" />
+    <Content Include="node_modules\content-type\package.json" />
+    <Content Include="node_modules\content-type\README.md" />
+    <Content Include="node_modules\cookie-signature\.npmignore" />
+    <Content Include="node_modules\cookie-signature\History.md" />
+    <Content Include="node_modules\cookie-signature\package.json" />
+    <Content Include="node_modules\cookie-signature\Readme.md" />
+    <Content Include="node_modules\cookie\HISTORY.md" />
+    <Content Include="node_modules\cookie\LICENSE" />
+    <Content Include="node_modules\cookie\package.json" />
+    <Content Include="node_modules\cookie\README.md" />
+    <Content Include="node_modules\debug\.coveralls.yml" />
+    <Content Include="node_modules\debug\.eslintrc" />
+    <Content Include="node_modules\debug\.npmignore" />
+    <Content Include="node_modules\debug\.travis.yml" />
+    <Content Include="node_modules\debug\bower.json" />
+    <Content Include="node_modules\debug\CHANGELOG.md" />
+    <Content Include="node_modules\debug\component.json" />
+    <Content Include="node_modules\debug\LICENSE" />
+    <Content Include="node_modules\debug\Makefile" />
+    <Content Include="node_modules\debug\package.json" />
+    <Content Include="node_modules\debug\README.md" />
+    <Content Include="node_modules\depd\History.md" />
+    <Content Include="node_modules\depd\LICENSE" />
+    <Content Include="node_modules\depd\package.json" />
+    <Content Include="node_modules\depd\Readme.md" />
+    <Content Include="node_modules\destroy\LICENSE" />
+    <Content Include="node_modules\destroy\package.json" />
+    <Content Include="node_modules\destroy\README.md" />
+    <Content Include="node_modules\ee-first\LICENSE" />
+    <Content Include="node_modules\ee-first\package.json" />
+    <Content Include="node_modules\ee-first\README.md" />
+    <Content Include="node_modules\encodeurl\HISTORY.md" />
+    <Content Include="node_modules\encodeurl\LICENSE" />
+    <Content Include="node_modules\encodeurl\package.json" />
+    <Content Include="node_modules\encodeurl\README.md" />
+    <Content Include="node_modules\escape-html\LICENSE" />
+    <Content Include="node_modules\escape-html\package.json" />
+    <Content Include="node_modules\escape-html\Readme.md" />
+    <Content Include="node_modules\etag\HISTORY.md" />
+    <Content Include="node_modules\etag\LICENSE" />
+    <Content Include="node_modules\etag\package.json" />
+    <Content Include="node_modules\etag\README.md" />
+    <Content Include="node_modules\express\History.md" />
+    <Content Include="node_modules\express\LICENSE" />
+    <Content Include="node_modules\express\package.json" />
+    <Content Include="node_modules\express\Readme.md" />
+    <Content Include="node_modules\finalhandler\HISTORY.md" />
+    <Content Include="node_modules\finalhandler\LICENSE" />
+    <Content Include="node_modules\finalhandler\node_modules\debug\.coveralls.yml" />
+    <Content Include="node_modules\finalhandler\node_modules\debug\.eslintrc" />
+    <Content Include="node_modules\finalhandler\node_modules\debug\.npmignore" />
+    <Content Include="node_modules\finalhandler\node_modules\debug\.travis.yml" />
+    <Content Include="node_modules\finalhandler\node_modules\debug\CHANGELOG.md" />
+    <Content Include="node_modules\finalhandler\node_modules\debug\component.json" />
+    <Content Include="node_modules\finalhandler\node_modules\debug\LICENSE" />
+    <Content Include="node_modules\finalhandler\node_modules\debug\Makefile" />
+    <Content Include="node_modules\finalhandler\node_modules\debug\package.json" />
+    <Content Include="node_modules\finalhandler\node_modules\debug\README.md" />
+    <Content Include="node_modules\finalhandler\node_modules\ms\license.md" />
+    <Content Include="node_modules\finalhandler\node_modules\ms\package.json" />
+    <Content Include="node_modules\finalhandler\node_modules\ms\readme.md" />
+    <Content Include="node_modules\finalhandler\package.json" />
+    <Content Include="node_modules\finalhandler\README.md" />
+    <Content Include="node_modules\forwarded\HISTORY.md" />
+    <Content Include="node_modules\forwarded\LICENSE" />
+    <Content Include="node_modules\forwarded\package.json" />
+    <Content Include="node_modules\forwarded\README.md" />
+    <Content Include="node_modules\fresh\HISTORY.md" />
+    <Content Include="node_modules\fresh\LICENSE" />
+    <Content Include="node_modules\fresh\package.json" />
+    <Content Include="node_modules\fresh\README.md" />
+    <Content Include="node_modules\http-errors\HISTORY.md" />
+    <Content Include="node_modules\http-errors\LICENSE" />
+    <Content Include="node_modules\http-errors\package.json" />
+    <Content Include="node_modules\http-errors\README.md" />
+    <Content Include="node_modules\inherits\LICENSE" />
+    <Content Include="node_modules\inherits\package.json" />
+    <Content Include="node_modules\inherits\README.md" />
+    <Content Include="node_modules\ipaddr.js\.npmignore" />
+    <Content Include="node_modules\ipaddr.js\.travis.yml" />
+    <Content Include="node_modules\ipaddr.js\bower.json" />
+    <Content Include="node_modules\ipaddr.js\Cakefile" />
+    <Content Include="node_modules\ipaddr.js\LICENSE" />
+    <Content Include="node_modules\ipaddr.js\package.json" />
+    <Content Include="node_modules\ipaddr.js\README.md" />
+    <Content Include="node_modules\ipaddr.js\src\ipaddr.coffee" />
+    <Content Include="node_modules\ipaddr.js\test\ipaddr.test.coffee" />
+    <Content Include="node_modules\media-typer\HISTORY.md" />
+    <Content Include="node_modules\media-typer\LICENSE" />
+    <Content Include="node_modules\media-typer\package.json" />
+    <Content Include="node_modules\media-typer\README.md" />
+    <Content Include="node_modules\merge-descriptors\HISTORY.md" />
+    <Content Include="node_modules\merge-descriptors\LICENSE" />
+    <Content Include="node_modules\merge-descriptors\package.json" />
+    <Content Include="node_modules\merge-descriptors\README.md" />
+    <Content Include="node_modules\methods\HISTORY.md" />
+    <Content Include="node_modules\methods\LICENSE" />
+    <Content Include="node_modules\methods\package.json" />
+    <Content Include="node_modules\methods\README.md" />
+    <Content Include="node_modules\mime-db\db.json" />
+    <Content Include="node_modules\mime-db\HISTORY.md" />
+    <Content Include="node_modules\mime-db\LICENSE" />
+    <Content Include="node_modules\mime-db\package.json" />
+    <Content Include="node_modules\mime-db\README.md" />
+    <Content Include="node_modules\mime-types\HISTORY.md" />
+    <Content Include="node_modules\mime-types\LICENSE" />
+    <Content Include="node_modules\mime-types\package.json" />
+    <Content Include="node_modules\mime-types\README.md" />
+    <Content Include="node_modules\mime\.npmignore" />
+    <Content Include="node_modules\mime\LICENSE" />
+    <Content Include="node_modules\mime\package.json" />
+    <Content Include="node_modules\mime\README.md" />
+    <Content Include="node_modules\mime\types.json" />
+    <Content Include="node_modules\ms\LICENSE.md" />
+    <Content Include="node_modules\ms\package.json" />
+    <Content Include="node_modules\ms\README.md" />
+    <Content Include="node_modules\negotiator\HISTORY.md" />
+    <Content Include="node_modules\negotiator\LICENSE" />
+    <Content Include="node_modules\negotiator\package.json" />
+    <Content Include="node_modules\negotiator\README.md" />
+    <Content Include="node_modules\on-finished\HISTORY.md" />
+    <Content Include="node_modules\on-finished\LICENSE" />
+    <Content Include="node_modules\on-finished\package.json" />
+    <Content Include="node_modules\on-finished\README.md" />
+    <Content Include="node_modules\parseurl\HISTORY.md" />
+    <Content Include="node_modules\parseurl\LICENSE" />
+    <Content Include="node_modules\parseurl\package.json" />
+    <Content Include="node_modules\parseurl\README.md" />
+    <Content Include="node_modules\path-to-regexp\History.md" />
+    <Content Include="node_modules\path-to-regexp\LICENSE" />
+    <Content Include="node_modules\path-to-regexp\package.json" />
+    <Content Include="node_modules\path-to-regexp\Readme.md" />
+    <Content Include="node_modules\proxy-addr\HISTORY.md" />
+    <Content Include="node_modules\proxy-addr\LICENSE" />
+    <Content Include="node_modules\proxy-addr\package.json" />
+    <Content Include="node_modules\proxy-addr\README.md" />
+    <Content Include="node_modules\qs\.eslintignore" />
+    <Content Include="node_modules\qs\.eslintrc" />
+    <Content Include="node_modules\qs\.jscs.json" />
+    <Content Include="node_modules\qs\CHANGELOG.md" />
+    <Content Include="node_modules\qs\LICENSE" />
+    <Content Include="node_modules\qs\package.json" />
+    <Content Include="node_modules\qs\README.md" />
+    <Content Include="node_modules\qs\test\.eslintrc" />
+    <Content Include="node_modules\range-parser\HISTORY.md" />
+    <Content Include="node_modules\range-parser\LICENSE" />
+    <Content Include="node_modules\range-parser\package.json" />
+    <Content Include="node_modules\range-parser\README.md" />
+    <Content Include="node_modules\send\HISTORY.md" />
+    <Content Include="node_modules\send\LICENSE" />
+    <Content Include="node_modules\send\package.json" />
+    <Content Include="node_modules\send\README.md" />
+    <Content Include="node_modules\serve-static\HISTORY.md" />
+    <Content Include="node_modules\serve-static\LICENSE" />
+    <Content Include="node_modules\serve-static\package.json" />
+    <Content Include="node_modules\serve-static\README.md" />
+    <Content Include="node_modules\setprototypeof\LICENSE" />
+    <Content Include="node_modules\setprototypeof\package.json" />
+    <Content Include="node_modules\setprototypeof\README.md" />
+    <Content Include="node_modules\statuses\codes.json" />
+    <Content Include="node_modules\statuses\HISTORY.md" />
+    <Content Include="node_modules\statuses\LICENSE" />
+    <Content Include="node_modules\statuses\package.json" />
+    <Content Include="node_modules\statuses\README.md" />
+    <Content Include="node_modules\type-is\HISTORY.md" />
+    <Content Include="node_modules\type-is\LICENSE" />
+    <Content Include="node_modules\type-is\package.json" />
+    <Content Include="node_modules\type-is\README.md" />
+    <Content Include="node_modules\unpipe\HISTORY.md" />
+    <Content Include="node_modules\unpipe\LICENSE" />
+    <Content Include="node_modules\unpipe\package.json" />
+    <Content Include="node_modules\unpipe\README.md" />
+    <Content Include="node_modules\utils-merge\.travis.yml" />
+    <Content Include="node_modules\utils-merge\LICENSE" />
+    <Content Include="node_modules\utils-merge\package.json" />
+    <Content Include="node_modules\utils-merge\README.md" />
+    <Content Include="node_modules\vary\HISTORY.md" />
+    <Content Include="node_modules\vary\LICENSE" />
+    <Content Include="node_modules\vary\package.json" />
+    <Content Include="node_modules\vary\README.md" />
+    <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\bootstrap-datetimepicker.js" />
+    <Content Include="Scripts\bootstrap-datetimepicker.min.js" />
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\index.js" />
+    <Content Include="Scripts\jquery-1.10.2.js" />
+    <Content Include="Scripts\jquery-1.10.2.min.js" />
+    <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.signalR-2.2.2.js" />
+    <Content Include="Scripts\jquery.signalR-2.2.2.min.js" />
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\modernizr-2.6.2.js" />
+    <Content Include="Scripts\moment-with-locales.js" />
+    <Content Include="Scripts\moment-with-locales.min.js" />
+    <Content Include="Scripts\moment.js" />
+    <Content Include="Scripts\moment.min.js" />
+    <Content Include="Scripts\npm.js" />
+    <Content Include="Scripts\respond.js" />
+    <Content Include="Scripts\respond.min.js" />
+    <Content Include="Scripts\_references.js" />
+    <Content Include="Upload\getout.jpg" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Views\Web.config" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Home\About.cshtml" />
+    <Content Include="Views\Home\Contact.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Account\_ExternalLoginsListPartial.cshtml" />
+    <Content Include="Views\Account\ConfirmEmail.cshtml" />
+    <Content Include="Views\Account\ExternalLoginConfirmation.cshtml" />
+    <Content Include="Views\Account\ExternalLoginFailure.cshtml" />
+    <Content Include="Views\Account\ForgotPassword.cshtml" />
+    <Content Include="Views\Account\ForgotPasswordConfirmation.cshtml" />
+    <Content Include="Views\Account\Login.cshtml" />
+    <Content Include="Views\Account\Register.cshtml" />
+    <Content Include="Views\Account\ResetPassword.cshtml" />
+    <Content Include="Views\Account\ResetPasswordConfirmation.cshtml" />
+    <Content Include="Views\Account\SendCode.cshtml" />
+    <Content Include="Views\Account\VerifyCode.cshtml" />
+    <Content Include="Views\Manage\AddPhoneNumber.cshtml" />
+    <Content Include="Views\Manage\ChangePassword.cshtml" />
+    <Content Include="Views\Manage\Index.cshtml" />
+    <Content Include="Views\Manage\ManageLogins.cshtml" />
+    <Content Include="Views\Manage\SetPassword.cshtml" />
+    <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
+    <Content Include="Views\Shared\Lockout.cshtml" />
+    <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\Movies\Create.cshtml" />
+    <Content Include="Views\Movies\Delete.cshtml" />
+    <Content Include="Views\Movies\Details.cshtml" />
+    <Content Include="Views\Movies\Edit.cshtml" />
+    <Content Include="Views\Movies\Index.cshtml" />
+    <Content Include="Views\Customers\Create.cshtml" />
+    <Content Include="Views\Customers\Delete.cshtml" />
+    <Content Include="Views\Customers\Details.cshtml" />
+    <Content Include="Views\Customers\Edit.cshtml" />
+    <Content Include="Views\Customers\Index.cshtml" />
+    <Content Include="Views\Orders\Create.cshtml" />
+    <Content Include="Views\Orders\Delete.cshtml" />
+    <Content Include="Views\Orders\Details.cshtml" />
+    <Content Include="Views\Orders\Edit.cshtml" />
+    <Content Include="Views\Orders\Index.cshtml" />
+    <Content Include="Views\Orders\_DeletePartial.cshtml" />
+    <Content Include="Views\ShopingCart\OpenCart.cshtml" />
+    <Content Include="Views\Movies\_Movie.cshtml" />
+    <Content Include="Views\Customers\AddToCart.cshtml" />
+    <Content Include="Views\Role\Index.cshtml" />
+    <Content Include="Views\Role\Create.cshtml" />
+    <Content Include="Views\Role\Edit.cshtml" />
+    <Content Include="Views\Role\Details.cshtml" />
+    <Content Include="Views\Role\Delete.cshtml" />
+    <Content Include="Views\ShopingCart\Cart.cshtml" />
+    <Content Include="Views\Shared\_LayoutAdmin.cshtml" />
+    <Content Include="Views\Movies\ShopMovies.cshtml" />
+    <Content Include="Views\Shared\PublicMenuNav.cshtml" />
+    <Content Include="Views\Role\UpdateUserRole.cshtml" />
+    <Content Include="Views\Orders\PreviousOrder.cshtml" />
+    <Content Include="Views\Customers\CheckOutStatus.cshtml" />
+    <Content Include="Views\Customers\CheckOut.cshtml" />
+    <Content Include="Views\ShopingCart\SeeCart.cshtml" />
+    <Content Include="Views\Orders\DisplayUserName.cshtml" />
+    <Content Include="Views\Account\Index.cshtml" />
+    <Content Include="Views\Movies\LatestMovies.cshtml" />
+    <Content Include="Views\Movies\OldestMovies.cshtml" />
+    <Content Include="Views\Movies\PopularMovies.cshtml" />
+    <Content Include="Views\Home\Chat.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="packages.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <None Include="Project_Readme.html" />
+    <Content Include="Scripts\jquery-1.10.2.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201709121011577_role3.resx">
+      <DependentUpon>201709121011577_role3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201709180926357_init-6.resx">
+      <DependentUpon>201709180926357_init-6.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710021343428_init89.resx">
+      <DependentUpon>201710021343428_init89.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710040815431_nint12.resx">
+      <DependentUpon>201710040815431_nint12.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710041034308_init25.resx">
+      <DependentUpon>201710041034308_init25.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710060644474_init17.resx">
+      <DependentUpon>201710060644474_init17.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>55463</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>https://localhost:44355/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+</Project>

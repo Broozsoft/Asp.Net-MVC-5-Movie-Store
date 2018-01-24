@@ -1,0 +1,31 @@
+﻿@model MovieStore.Models.RoleViewModel
+@using Microsoft.AspNet.Identity
+
+@{
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(model => model.Name, new SelectList(ViewBag.Roles, "Value", "Text"), new { @class = "form-control" })
+            </div>
+        </div>
+
+        <input type="hidden" name="UserId" value="@ViewBag.UserId" />
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+

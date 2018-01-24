@@ -1,0 +1,30 @@
+﻿@using Microsoft.AspNet.Identity
+
+<ul class="nav navbar-nav navbar-right">
+
+    @if (Session["OrderId"] != null)
+    {
+        <span class="show-card-content_number">@ViewBag.CartAmount </span>
+        <li>
+            @Html.ActionLink(" ", "OpenCart", "ShopingCart", routeValues: new { id = Session["OrderId"] }, htmlAttributes:
+                    new { id = "loginLink", @class = "fa fa-shopping-cart fa-3x white", @style = "color:white;margin-right:50px" })
+        </li>
+    }
+    else
+    {
+        <span class="show-card-content_number">0</span>
+        <li>
+            <i class="fa fa-shopping-cart fa-3x white"></i>
+        </li>
+    }
+</ul>
+
+@*<div class="wrapper">
+
+
+        <div class="circle">
+           <i class="fa fa-shopping-cart fa-4x"></i>
+        </div>
+    </div>*@
+
+

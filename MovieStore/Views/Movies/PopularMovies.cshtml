@@ -1,0 +1,11 @@
+﻿
+@model IEnumerable<MovieStore.Models.Movie>
+
+
+@foreach (var item in Model)
+{
+
+    @Html.Partial("_Movie", item);
+}
+
+

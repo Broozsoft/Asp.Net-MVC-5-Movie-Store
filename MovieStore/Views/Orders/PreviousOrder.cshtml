@@ -1,0 +1,61 @@
+﻿@model PagedList.IPagedList<MovieStore.Models.Order>
+@using PagedList.Mvc;
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+
+}
+
+@ViewData["number"];
+
+<link href="~/Content/PagedList.css" rel="stylesheet" />
+
+<h2>Your Previous Purchases</h2>
+@ViewBag.session
+
+<table class="table">
+    <tr>
+        <th>
+            ID
+        </th>
+        <th>
+            Date
+        </th>
+        <th>
+            Customer Name
+        </th>
+        <th>
+            Options
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.OrderDate)
+            </td>
+            <td>
+                @Html.Action("DisplayUserName", "Orders", new { id = item.CustomerId })
+                
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                @Html.ActionLink("See Cart", "SeeCart", "ShopingCart", routeValues: new { id = item.Id }, htmlAttributes: new { })
+
+                <i class="fa fa-trash fa-2x cursor-pointer" data-toggle="modal" data-target="#myModal"></i>
+            </td>
+        </tr>
+        @Html.Partial("_DeletePartial", new ViewDataDictionary { { "id", item.Id } })
+    }
+
+</table>
+
+<br />
+Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+
+@Html.PagedListPager(Model, page => Url.Action("Index",
+    new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
